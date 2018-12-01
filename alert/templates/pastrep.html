@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <h1>Reports for {{date}} to {{dateto}}</h1>
+ </br>
+
+  
+  <div class="container">
+	<table class="table">
+	<thead>
+	<tr text-align: center>
+	<th>Type</th>
+	<th>Address</th>
+	<th>Date</th>
+	<th>Link</th>
+	</tr>
+    </thead>
+	
+	{% for report in reports %}
+	
+	<tr text-align: center>
+	<td>
+	 {{report[1]}}
+	</td>
+		<td>
+	 {{report[3]}}
+	</td>
+		<td>
+	 {{report[2]}}
+	</td>
+		<td>
+	 <a href="{{report[4]}}">{{report[4]}}</a>
+	</td>
+	
+	</tr>
+	  {% endfor %}
+
+    </table>
+  
+  
+{% endblock %}

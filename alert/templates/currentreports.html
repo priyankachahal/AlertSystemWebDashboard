@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <h1>Reports within past 24 hours</h1>
+ </br>
+    
+    <div class="container">
+	<table class="table">
+	<thead>
+	<tr text-align: center>
+	<th>Report_ID</th>
+	<th>Type</th>
+	<th>Address</th>
+	<th>Description</th>
+	<th>Time</th>
+	<th>Image</th>
+	</tr>
+    </thead>
+	
+	{% for report in reports %}
+	
+	<tr text-align: center>
+	<td>
+	 {{report[0]}}
+	</td>
+	<td>
+	 {{report[5]}}
+	</td>
+		<td>
+	 {{report[2]}}
+	</td>
+		<td>
+	 {{report[3]}}
+	</td>
+		<td>
+	 {{report[8]}}
+	</td>
+	<td>
+	{% if report[4] != 'No image provided'%}
+	 <img src={{url_for('static', filename='uploads/'+report[4])}} id="image" width="260" height="160" />
+	 {% else %}
+	 {{report[4]}}
+	 {% endif %}
+	</td>
+	</tr>
+	  {% endfor %}
+
+    </table>
+  
+  
+{% endblock %}

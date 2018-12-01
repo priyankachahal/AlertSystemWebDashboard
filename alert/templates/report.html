@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <div class="col-lg-4 col-lg-offset-4 text-center">
+	 <h1>Report !</h1>
+	 </div>
+	</br>
+  <form enctype="multipart/form-data" action="" method="POST" >
+     <div class="form-group row">
+	<div class="col-lg-4 col-lg-offset-4">
+      <label>Address</label>
+      <input type="text" required name="address"   class="form-control"  value={{request.form.address}} >
+    </div></div>
+    <div class="form-group row" >
+	<div class="col-lg-4 col-lg-offset-4">
+      <label>Description</label>
+      <textarea name="description" class="form-control"  value={{request.form.description}}></textarea>
+    </div></div>
+	<div class="form-group row" >
+    <div class="col-lg-2 col-lg-offset-4">
+	<label>Type of Emergency</label>
+	<select class="form-control" name= "type_em">
+	
+    <option value="Robbery">Robbery</option>
+    <option value="Accident">Accident</option>
+    <option value="Other">Other</option>
+
+     </select>
+	 </div></div>
+    <div class="form-group row" >
+	<div class="col-lg-4 col-lg-offset-4">
+	 <label>Image</label>
+	 <input type="file" name="image"><br>
+     </div>
+    </div><div class="col-lg-4 col-lg-offset-4 text-center">
+    <p><input type="submit" class="btn btn-primary" value="Submit"></p>
+	</div>
+  </form>
+	  
+	
+{% endblock %}

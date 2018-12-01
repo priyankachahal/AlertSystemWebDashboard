@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="col-lg-4 col-lg-offset-4 text-center">
+  <h3>Select the Date Range</h3>
+  </div>
+ </br></br>
+  </br></br>
+ 
+    <form action="" method="POST">
+    <div class="form-group row " >
+	
+	 <div class="col-xs-2 col-xs-offset-5 text-center">
+      <label>Date From</label>
+      <input type="Date" required name="date" placeholder="YYYY-MM-DD"  class="form-control"  value={{request.form.date}}>
+	    </br>
+	  <label>Date To</label>
+	  <input type="Date" required name="dateto" placeholder="YYY-MM-DD"  class="form-control"  value={{request.form.dateto}}>
+	  </div>
+		</div>
+    
+
+	<div class="col-lg-4 col-lg-offset-4 text-center">
+    <button type="submit" class="btn btn-primary" href="pastrep/{{date}}" >Submit</button>
+	</div>
+  </form>
+  
+ 
+  
+{% endblock %}
