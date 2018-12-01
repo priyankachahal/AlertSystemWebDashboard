@@ -1,32 +1,23 @@
+import os
 import smtplib
+import string
 from functools import wraps
 
 import nltk
-import os
 import pushpad
-import string
 from flask import Flask, render_template, flash, redirect, url_for, session, request
-from flaskext.mysql import MySQL
 from geopy.distance import great_circle
 from geopy.geocoders import Nominatim
 from sklearn.feature_extraction.text import TfidfVectorizer
 from werkzeug.utils import secure_filename
 from wtforms import Form, StringField, PasswordField, validators
 
-from api_rest import user_authenticate_api, user_register_api, get_news_report_api, post_news_report_api, get_news_by_id_report_api, update_news_by_id_report_api
+from api_rest import user_authenticate_api, user_register_api, get_news_report_api, post_news_report_api, \
+    get_news_by_id_report_api, update_news_by_id_report_api
 
 app = Flask(__name__)
 
 project = pushpad.Pushpad(auth_token='3e7558829ba95991c3ae0cd137566a40', project_id=5744)
-# Config MySQL
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'root'
-app.config['MYSQL_DATABASE_DB'] = 'data'
-app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
-# init MYSQL
-mysql = MySQL()
-mysql.init_app(app)
 
 stemmer = nltk.stem.porter.PorterStemmer()
 remove_punctuation_map = dict((ord(char), None) for char in string.punctuation)
@@ -88,40 +79,6 @@ def currentreports():
     else:
         msg = 'No reports Found'
         return render_template('currentreports.html', msg=msg)
-    # Close connection
-    cur.close()
-    con.close()
-
-
-@app.route('/pastrep/<string:date>&<string:dateto>')
-def pastrep(date, dateto):
-    conn = mysql.connect()
-    cur = conn.cursor()
-
-    # Get reports
-    result = cur.execute("SELECT * FROM pastreport where date BETWEEN %s AND  %s", [date, dateto])
-
-    reports = cur.fetchall()
-    cur.close()
-    conn.close()
-    if result > 0:
-        return render_template('pastrep.html', reports=reports, date=date, dateto=dateto)
-    else:
-        msg = 'No reports Found'
-        return render_template('nopastrep.html', msg=msg, date=date, dateto=dateto)
-
-
-@app.route('/pastreports', methods=['GET', 'POST'])
-def pastreports():
-    if 'email' not in session:
-        return redirect(url_for('login'))
-    if request.method == 'POST':
-        date = request.form["date"]
-        dateto = request.form["dateto"]
-
-        return redirect(url_for('pastrep', date=date, dateto=dateto))
-
-    return render_template('pastreports.html')
 
 
 # Register Form Class
