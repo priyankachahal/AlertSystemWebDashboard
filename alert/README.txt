@@ -10,4 +10,7 @@
 # after you run you should see something like this in the output
 o.p.cmpe220.CMPE220RestController        : Started CMPE220RestController in 6.395 seconds (JVM running for 6.969)
 
-# then you are good to run the flask code
+# then you are good to run the flask code as follows
+
+# python app.py server will start on http://127.0.0.1:5000
+
