@@ -252,7 +252,8 @@ def editreport():
     if 'email' not in session:
         return redirect(url_for('login'))
     if request.method == 'POST':
-        reportID = request.form["reportID"]
+        #reportID = request.form["reportID"]
+        reportID = request.referrer.replace("http://127.0.0.1:5000/editreport?reportID=", "")
         description = request.form["description"]
         response_dict = get_news_by_id_report_api(reportID)
         if response_dict.get("news") is None:

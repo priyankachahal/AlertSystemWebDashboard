@@ -55,7 +55,7 @@
 	<th>Address</th>
 	<th>Description</th>
 	<th>Time</th>
-    <th>Edit</th>
+    <th>Add To Report</th>
 	</tr>
     </thead>
 
@@ -78,7 +78,7 @@
 	 {{report[8]}}
 	</td>
     <td>
-        <button onclick="window.location='http://127.0.0.1:5000/editreport'">Edit</button>
+        <button class="reportID-class">Add To Report</button>
     </td>
 	</tr>
 	  {% endfor %}
@@ -88,7 +88,12 @@
 </div>
 <script src="../static/js/jquery.min.js"></script>
 <script src="../static/bootstrap/js/bootstrap.min.js"></script>
-
+<script>
+    $(".reportID-class").click(function() {
+        var value = $(this).closest('tr').children('td:first').text();
+        window.location.href='http://127.0.0.1:5000/editreport?reportID='.concat(value.trim());
+});
+</script>
 </body>
 
 </html>

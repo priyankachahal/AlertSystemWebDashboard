@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>smart_app webpage1</title>
+    <title>Edit news report</title>
     <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/fonts/ionicons.min.css">
     <link rel="stylesheet" href="../static/css/styles.min.css">
@@ -26,7 +26,7 @@
                     <p class="text-right">Report ID :</p>
                 </div>
                 <div class="col-lg-6">
-                    <input type="text" required name="reportID"   class="align-items-center align-content-center"  value={{request.form.reportID}} >
+                    <input name="reportID" type="text" required name="reportID"  class="align-items-center align-content-center"  value={{request.form.reportID}} >
                 </div>
                 <div class="col-lg-6">
                     <p class="text-right">Description:</p>
@@ -52,6 +52,26 @@
 <div></div>
 <script src="../static/js/jquery.min.js"></script>
 <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    $( document ).ready(function() {
+        var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = window.location.search.substring(1),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+                for (i = 0; i < sURLVariables.length; i++) {
+                    sParameterName = sURLVariables[i].split('=');
+                    if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                }
+        }};
+        var reportID = getUrlParameter('reportID');
+        $('input[name=reportID]').val(reportID);
+        $('input[name=reportID]').prop('disabled', true);
+    });
+
+</script>
 </body>
 
 </html>
