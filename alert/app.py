@@ -60,25 +60,6 @@ def index():
     return render_template('home.html')
 
 
-@app.route('/currentreports')
-def currentreports():
-    result = get_news_report_api(None, "60", "-creationDate")
-    if len(result.get("news")) > 0:
-        reports = result.get("news");
-        formattedReports = []
-        for report in reports:
-            formattedReport = [None] * 10
-            formattedReport[0] = report.get("id")
-            formattedReport[2] = report.get("address")
-            formattedReport[3] = report.get("description")
-            formattedReport[4] = "No image provided"
-            formattedReport[5] = report.get("category")
-            formattedReport[8] = report.get("creationDate")
-            formattedReports.append(formattedReport)
-        return render_template('currentreports.html', reports=formattedReports)
-    else:
-        msg = 'No reports Found'
-        return render_template('currentreports.html', msg=msg)
 
 
 # Register Form Class
@@ -167,25 +148,25 @@ def logout():
 @app.route('/dashboard')
 @is_logged_in
 def dashboard():
-    return render_template('dashboard.html')
+    category = request.args.get('category')
+    if category is None:
+        result = get_news_report_api(None, "60", "-creationDate")
+    else:
+        result = get_news_report_api(category, "60", "-creationDate")
+    formattedReports = []
+    if len(result.get("news")) > 0:
+        reports = result.get("news");
+        for report in reports:
+            formattedReport = [None] * 10
+            formattedReport[0] = report.get("id")
+            formattedReport[2] = report.get("address")
+            formattedReport[3] = report.get("description")
+            formattedReport[4] = "No image provided"
+            formattedReport[5] = report.get("category")
+            formattedReport[8] = report.get("creationDate")
+            formattedReports.append(formattedReport)
+    return render_template('dashboard.html', reports=formattedReports)
 
-
-@app.route('/editreport', methods=['GET', 'POST'])
-@is_logged_in
-def editreport():
-    if 'email' not in session:
-        return redirect(url_for('login'))
-    if request.method == 'POST':
-        reportID = request.form["reportID"]
-        description = request.form["description"]
-        response_dict = get_news_by_id_report_api(reportID)
-        if response_dict.get("news") is None:
-            flash('No such report found. Please enter valid report ID', 'danger')
-        else:
-            desc = response_dict.get("news").get("description")
-            update_news_by_id_report_api(reportID, str(desc) + "\n" + str(description))
-            return redirect(url_for('currentreports'))
-    return render_template('editreport.html')
 
 
 @app.route('/report', methods=['GET', 'POST'])
@@ -259,6 +240,52 @@ def report():
         return redirect(url_for('dashboard'))
     return render_template('report.html')
 
+
+
+
+
+
+
+
+
+# unused paths
+@app.route('/editreport', methods=['GET', 'POST'])
+@is_logged_in
+def editreport():
+    if 'email' not in session:
+        return redirect(url_for('login'))
+    if request.method == 'POST':
+        reportID = request.form["reportID"]
+        description = request.form["description"]
+        response_dict = get_news_by_id_report_api(reportID)
+        if response_dict.get("news") is None:
+            flash('No such report found. Please enter valid report ID', 'danger')
+        else:
+            desc = response_dict.get("news").get("description")
+            update_news_by_id_report_api(reportID, str(desc) + "\n" + str(description))
+            return redirect(url_for('currentreports'))
+    return render_template('editreport.html')
+
+
+@app.route('/currentreports')
+def currentreports():
+    result = get_news_report_api(None, "60", "-creationDate")
+    if len(result.get("news")) > 0:
+        reports = result.get("news");
+        formattedReports = []
+        for report in reports:
+            formattedReport = [None] * 10
+            formattedReport[0] = report.get("id")
+            formattedReport[2] = report.get("address")
+            formattedReport[3] = report.get("description")
+            formattedReport[4] = "No image provided"
+            formattedReport[5] = report.get("category")
+            formattedReport[8] = report.get("creationDate")
+            formattedReports.append(formattedReport)
+        return render_template('currentreports.html', reports=formattedReports)
+    else:
+        msg = 'No reports Found'
+        return render_template('currentreports.html', msg=msg)
 
 if __name__ == '__main__':
     app.secret_key = 'secret123'

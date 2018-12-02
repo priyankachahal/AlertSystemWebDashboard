@@ -11,22 +11,74 @@
 </head>
 
 <body>
-    <ul class="nav nav-tabs nav-justified"></ul>
-    <nav class="navbar navbar-light navbar-expand-md">
-        <div class="container-fluid"><a class="navbar-brand" href="#"><strong>NewsFeed</strong></a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse"
-                id="navcol-1">
-                <ul class="nav navbar-nav align-content-center mr-auto">
-                    <li class="dropdown"><a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">Reports</a>
-                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">road_accident</a><a class="dropdown-item" role="presentation" href="#">fire</a><a class="dropdown-item" role="presentation" href="#">natural_disaster</a><a class="dropdown-item"
-                                role="presentation" href="#">crime</a><a class="dropdown-item" role="presentation" href="#">Others</a></div>
-                    </li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
-                </ul><a class="btn btn-primary" role="button" href="/report" style="background-color:rgb(19,171,237);">Report</a><button class="btn btn-primary" type="button" style="background-color:rgb(255,0,0);">Logout</button></div>
+<ul class="nav nav-tabs nav-justified">
+</ul>
+<nav class="navbar navbar-light navbar-expand-md">
+    <div class="container-fluid"><a class="navbar-brand" href="#"><strong>NewsFeed</strong></a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse"
+             id="navcol-1">
+            <ul class="nav navbar-nav align-content-center mr-auto">
+                <li class="dropdown">
+                    <a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">Reports</a>
+                    <div class="dropdown-menu" role="menu">
+                        <a class="dropdown-item" role="presentation" href="/dashboard?category=road_accident">road_accident</a>
+                        <a class="dropdown-item" role="presentation" href="/dashboard?category=fire">fire</a>
+                        <a class="dropdown-item" role="presentation" href="/dashboard?category=natural_disaster">natural_disaster</a>
+                        <a class="dropdown-item" role="presentation" href="/dashboard?category=crime">crime</a>
+                        <a class="dropdown-item" role="presentation" href="/dashboard?category=others">others</a>
+                    </div>
+                </li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+            </ul>
+            <a class="btn btn-primary" role="button" href="/report" style="background-color:rgb(19,171,237);">Report</a>
+            <button onclick="window.location.href='http://127.0.0.1:5000/logout'" class="btn btn-primary" type="button" style="background-color:rgb(255,0,0);">Logout</button>
         </div>
-    </nav>
-    <script src="../static/js/jquery.min.js"></script>
-    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+    </div>
+</nav>
+
+
+<div class="container">
+	<table class="table">
+	<thead>
+	<tr text-align: center>
+	<th>Report_ID</th>
+	<th>Type</th>
+	<th>Address</th>
+	<th>Description</th>
+	<th>Time</th>
+	</tr>
+    </thead>
+
+	{% for report in reports %}
+
+	<tr text-align: center>
+	<td>
+	 {{report[0]}}
+	</td>
+	<td>
+	 {{report[5]}}
+	</td>
+		<td>
+	 {{report[2]}}
+	</td>
+		<td>
+	 {{report[3]}}
+	</td>
+		<td>
+	 {{report[8]}}
+	</td>
+	</tr>
+	  {% endfor %}
+
+    </table>
+
+</div>
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>
