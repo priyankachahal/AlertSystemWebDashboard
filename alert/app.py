@@ -85,10 +85,10 @@ def currentreports():
 
 class RegisterForm(Form):
     name = StringField('Name', [validators.Length(min=1, max=50)])
-    email = StringField('Email id', [validators.Length(min=4, max=50)])
-    password = PasswordField('Password', [validators.DataRequired(),
+    email = StringField('email', [validators.Length(min=4, max=50)])
+    password = PasswordField('password', [validators.DataRequired(),
                                           validators.EqualTo('confirm', message='Passwords do not match')])
-    confirm = PasswordField('Confirm Password')
+    confirm = PasswordField('password-repeat')
     street = StringField('Street', [validators.Length(min=5, max=50)])
     city = StringField('City', [validators.Length(min=2, max=45)])
     zipcode = StringField('Zipcode', [validators.Length(min=1, max=25)])

@@ -11,42 +11,57 @@
 </head>
 
 <body>
-    <div class="container d-table-cell">
-        <div class="col">
-            <h1 class="text-center">#Report Emergency#</h1>
-        </div>
+<div class="container d-table-cell">
+    <div class="col">
+        <h1 class="text-center">#Report Emergency#</h1>
+    </div>
+    <form enctype="multipart/form-data" action="/report" method="POST">
         <div class="col">
             <div class="row">
                 <div class="col-lg-6">
-                    <p class="text-right">Title :</p>
+                    <p class="text-right">Address :</p>
                 </div>
-                <div class="col-lg-6"><input class="align-items-center align-content-center" type="text"></div>
+                <div class="col-lg-6">
+                    <input type="text" required name="address" class="align-items-center align-content-center"
+                           value={{request.form.address}}>
+                    <!-- <input class="align-items-center align-content-center" type="text"> -->
+                </div>
                 <div class="col-lg-6">
                     <p class="text-right">Description:</p>
                 </div>
-                <div class="col"><input class="align-items-center align-content-center" type="text">
-                    <div class="dropdown"><button class="btn btn-primary dropdown-toggle d-inline-flex flex-grow-1 flex-shrink-1 align-items-center align-self-center" data-toggle="dropdown" aria-expanded="false" type="button">Category&nbsp;</button>
-                        <div class="dropdown-menu"
-                            role="menu"><a class="dropdown-item" role="presentation" href="#">road_accident</a><a class="dropdown-item" role="presentation" href="#">fire</a><a class="dropdown-item" role="presentation" href="#">natural_disaster</a><a class="dropdown-item"
-                                role="presentation" href="#">crime</a><a class="dropdown-item" role="presentation" href="#">others</a>
-                            <div class="dropdown-divider" role="presentation"></div>
-                            <div class="dropdown-divider" role="presentation"></div>
-                        </div>
-                    </div>
+                <div class="col">
+                    <textarea name="description" class="align-items-center align-content-center"
+                              value={{request.form.description}}></textarea>
+                </div>
+                <div class="col-lg-6">
+                    <p class="text-right">Category :</p>
+                </div>
+                <div class="col-lg-6">
+                    <select name="type_em">
+                        <option value="Robbery">road_accident</option>
+                        <option value="Accident">fire</option>
+                        <option value="Accident">natural_disaster</option>
+                        <option value="Accident">crime</option>
+                        <option value="Other">Other</option>
+                    </select>
                 </div>
             </div>
         </div>
-    </div>
-    <div>
         <div class="container">
             <div class="row">
-                <div class="col-md-6"><button class="btn btn-primary active align-items-center" type="submit">Submit</button></div>
+                <div class="col-md-6">
+                    <button class="btn btn-primary active align-items-center" type="submit">Submit</button>
+                </div>
             </div>
         </div>
-    </div>
-    <div></div>
-    <script src="../static/js/jquery.min.js"></script>
-    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+    </form>
+</div>
+<div>
+
+</div>
+<div></div>
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>
