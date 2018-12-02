@@ -24,6 +24,13 @@ def user_authenticate_api(email, password):
     return json.loads(response.text)
 
 
+def get_registered_users_api():
+    headers = {'Content-Type': 'application/json'}
+    response = requests.get(url=USER_REGISTER_URL + "?start=0&limit=200", headers=headers)
+    print response.text
+    return json.loads(response.text)
+
+
 def user_register_api(name, email, password, street, city, zipcode, phone):
     data = {
         "userProfile": {

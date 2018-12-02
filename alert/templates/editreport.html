@@ -1,25 +1,57 @@
-{% extends 'layout.html' %}
+<!DOCTYPE html>
+<html>
 
-{% block body %}
-  <div class="col-lg-4 col-lg-offset-4 text-center">
-	 <h1>Add to a current report</h1>
-	 </div>
-	</br>
-  <form enctype="multipart/form-data" action="" method="POST" >
-     <div class="form-group row">
-	<div class="col-lg-4 col-lg-offset-4">
-      <label>Report ID</label>
-      <input type="text" required name="reportID"   class="form-control"  value={{request.form.reportID}} >
-    </div></div>
-    <div class="form-group row" >
-	<div class="col-lg-4 col-lg-offset-4">
-      <label>Description</label>
-      <textarea name="description" required class="form-control"  value={{request.form.description}}></textarea>
-    </div></div>
-	<div class="col-lg-4 col-lg-offset-4 text-center">
-    <p><input type="submit" class="btn btn-primary" value="Submit"></p>
-	</div>
-  </form>
-	  
-	
-{% endblock %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>smart_app webpage1</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="../static/css/styles.min.css">
+</head>
+
+<body>
+<div class="container">
+      {% include 'includes/_messages.html' %}
+      {% block body %}{% endblock %}
+    </div>
+<div class="container d-table-cell">
+    <div class="col">
+        <h1 class="text-center">Update Emergency</h1>
+    </div>
+    <form enctype="multipart/form-data" action="/editreport" method="POST">
+        <div class="col">
+            <div class="row">
+                <div class="col-lg-6">
+                    <p class="text-right">Report ID :</p>
+                </div>
+                <div class="col-lg-6">
+                    <input type="text" required name="reportID"   class="align-items-center align-content-center"  value={{request.form.reportID}} >
+                </div>
+                <div class="col-lg-6">
+                    <p class="text-right">Description:</p>
+                </div>
+                <div class="col">
+                    <textarea name="description" class="align-items-center align-content-center"
+                              value={{request.form.description}}></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <button class="btn btn-primary active align-items-center" type="submit">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div>
+
+</div>
+<div></div>
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

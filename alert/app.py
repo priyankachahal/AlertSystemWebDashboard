@@ -13,7 +13,7 @@ from werkzeug.utils import secure_filename
 from wtforms import Form, StringField, PasswordField, validators
 
 from api_rest import user_authenticate_api, user_register_api, get_news_report_api, post_news_report_api, \
-    get_news_by_id_report_api, update_news_by_id_report_api
+    get_news_by_id_report_api, update_news_by_id_report_api, get_registered_users_api
 
 app = Flask(__name__)
 
@@ -150,9 +150,9 @@ def logout():
 def dashboard():
     category = request.args.get('category')
     if category is None:
-        result = get_news_report_api(None, "60", "-creationDate")
+        result = get_news_report_api(None, "720", "-creationDate")
     else:
-        result = get_news_report_api(category, "60", "-creationDate")
+        result = get_news_report_api(category, "720", "-creationDate")
     formattedReports = []
     if len(result.get("news")) > 0:
         reports = result.get("news");
@@ -217,34 +217,32 @@ def report():
 
         # Execute query
         if flag == True:
-            response_dict = post_news_report_api(email, address, description, imagename, type_em, longi, lati)
-            tolist = ["chahalpriyanka457@gmail.com"]
-            subject = type_em + " at " + address
-            body = type_em + " at " + address + "\n" + description
-            smtpserver = smtplib.SMTP("smtp.gmail.com", 587)
-            smtpserver.ehlo()
-            smtpserver.starttls()
-            smtpserver.ehlo()
-            smtpserver.login(gmail_user, gmail_pwd)
-            header = 'To:' + ", ".join(tolist) + '\n' + 'From: ' + gmail_user + '\n' + 'Subject:' + subject + ' \n'
-            msg = header + '\n' + body + '\n\n'
-            smtpserver.sendmail(gmail_user, tolist, msg)
-            smtpserver.close()
-            #flash('Emergency reported successfully', 'success')
-            #notification = pushpad.Notification(project, body=type_em + " at " + address + "\n" + description)
-            #notification.broadcast()
+            post_news_report_api(email, address, description, imagename, type_em, longi, lati)
+            response_dict = get_registered_users_api()
+            registered_users = response_dict.get("users")
+            tolist = []
+            for i in range(len(registered_users)):
+                tolist.append(registered_users[i].get("email"))
+            if len(tolist) > 0:
+                subject = type_em + " at " + address
+                body = type_em + " at " + address + "\n" + description
+                smtpserver = smtplib.SMTP("smtp.gmail.com", 587)
+                smtpserver.ehlo()
+                smtpserver.starttls()
+                smtpserver.ehlo()
+                smtpserver.login(gmail_user, gmail_pwd)
+                header = 'To:' + ", ".join(tolist) + '\n' + 'From: ' + gmail_user + '\n' + 'Subject:' + subject + ' \n'
+                msg = header + '\n' + body + '\n\n'
+                smtpserver.sendmail(gmail_user, tolist, msg)
+                smtpserver.close()
+                #flash('Emergency reported successfully', 'success')
+                #notification = pushpad.Notification(project, body=type_em + " at " + address + "\n" + description)
+                #notification.broadcast()
         else:
             flash('Emergency has already been reported.', 'warning')
 
         return redirect(url_for('dashboard'))
     return render_template('report.html')
-
-
-
-
-
-
-
 
 
 # unused paths
@@ -262,29 +260,9 @@ def editreport():
         else:
             desc = response_dict.get("news").get("description")
             update_news_by_id_report_api(reportID, str(desc) + "\n" + str(description))
-            return redirect(url_for('currentreports'))
+            return redirect(url_for('dashboard'))
     return render_template('editreport.html')
 
-
-@app.route('/currentreports')
-def currentreports():
-    result = get_news_report_api(None, "60", "-creationDate")
-    if len(result.get("news")) > 0:
-        reports = result.get("news");
-        formattedReports = []
-        for report in reports:
-            formattedReport = [None] * 10
-            formattedReport[0] = report.get("id")
-            formattedReport[2] = report.get("address")
-            formattedReport[3] = report.get("description")
-            formattedReport[4] = "No image provided"
-            formattedReport[5] = report.get("category")
-            formattedReport[8] = report.get("creationDate")
-            formattedReports.append(formattedReport)
-        return render_template('currentreports.html', reports=formattedReports)
-    else:
-        msg = 'No reports Found'
-        return render_template('currentreports.html', msg=msg)
 
 if __name__ == '__main__':
     app.secret_key = 'secret123'
