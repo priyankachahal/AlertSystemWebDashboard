@@ -11,6 +11,10 @@
 </head>
 
 <body>
+<div class="container">
+      {% include 'includes/_messages.html' %}
+      {% block body %}{% endblock %}
+    </div>
 <div class="register-photo">
     <div class="form-container">
         {% from "includes/_formhelpers.html" import render_field %}

@@ -11,6 +11,10 @@
 </head>
 
 <body>
+<div class="container">
+      {% include 'includes/_messages.html' %}
+      {% block body %}{% endblock %}
+    </div>
 <div class="container d-table-cell">
     <div class="col">
         <h1 class="text-center">#Report Emergency#</h1>

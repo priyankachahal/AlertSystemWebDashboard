@@ -234,7 +234,7 @@ def report():
             #notification = pushpad.Notification(project, body=type_em + " at " + address + "\n" + description)
             #notification.broadcast()
         else:
-            flash('Emergency has already been reported. You can add extra information to a current report', 'warning')
+            flash('Emergency has already been reported.', 'warning')
 
         return redirect(url_for('dashboard'))
     return render_template('report.html')
