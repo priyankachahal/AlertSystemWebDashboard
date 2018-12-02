@@ -1,12 +1,44 @@
-{% extends 'layout.html' %}
+<!DOCTYPE html>
+<html>
 
-{% block body %}
-  <div class="jumbotron text-center">
-    <h1>Welcome To Emergency Alert App</h1>
-    <p class="lead">We will alert you as quick as possible</p>
-    {% if session.logged_in == NULL %}
-      <a href="/register" class="btn btn-primary btn-lg">Register</a>
-      <a href="/login" class="btn btn-success btn-lg">Login</a>
-    {% endif %}
-  </div>
-{% endblock %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerts Home Page</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="../static/css/styles.min.css">
+</head>
+
+<body>
+<div class="container">
+    <div class="col">
+        <nav class="navbar navbar-light navbar-expand-md">
+            <div class="container-fluid"><a class="navbar-brand" href="#"><strong>HOME</strong></a>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
+                        class="navbar-toggler-icon"></span></button>
+                <div
+                        class="collapse navbar-collapse" id="navcol-1"></div>
+            </div>
+        </nav>
+    </div>
+    <div class="col">
+        <div>
+            <div class="jumbotron"
+                 style="/*font-size:initial;*/background-size:cover;height:841px;background-image:url(&quot;assets/img/emergency-word-concept-background_23-214794763214.jpg&quot;);">
+                <h1 class="text-center text-primary" style="font-size:62px;">SmartAlert App</h1>
+                <p class="text-center text-secondary" style="font-size:30px;"><strong>Alerts you within no Time</strong>
+                </p>
+                <p class="text-center"><a class="btn btn-primary btn-lg" role="button" href="/register"
+                                          style="background-color:rgb(0,255,56);">Register</a></p>
+                <p class="text-center"><a class="btn btn-primary btn-lg" role="button" href="/login"
+                                          style="background-color:rgb(0,87,255);">Login</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

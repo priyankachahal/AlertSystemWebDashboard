@@ -1,42 +1,32 @@
-{% extends 'layout.html' %}
+<!DOCTYPE html>
+<html>
 
-{% block body %}
-  <h1><small> Welcome {{session.name}}</small><h1>
-  <h2> </h2>
-  
-  
-  </br>
-  <a class="btn btn-danger" href="/report"> Report an emergency!</a>
-  </br></br>
-  <a class="btn btn-warning" href="/editreport"> Add to a current report</a>
-  </br></br></br></br> </br></br></br></br> </br></br></br></br>
-    <hr>
-  <a href="https://alertapp.pushpad.xyz/p/5744">Subscribe/Unsubscribe to Push Notifications</a>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>smart_app webpage1</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="../static/css/styles.min.css">
+</head>
 
-  
-<!--  <table class="table table-striped">
-    <tr>
-      <th>ID</th>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Date</th>
-      <th></th>
-      <th></th>
-    </tr>
-    {% for article in articles %}
-      <tr>
-        <td>{{article.id}}</td>
-        <td>{{article.title}}</td>
-        <td>{{article.author}}</td>
-        <td>{{article.create_date}}</td>
-        <td><a href="edit_article/{{article.id}}" class="btn btn-default pull-right">Edit</a></td>
-        <td>
-          <form action="{{url_for('delete_article', id=article.id)}}" method="post">
-            <input type="hidden" name="_method" value="DELETE">
-            <input type="submit" value="Delete" class="btn btn-danger">
-          </form>
-        </td>
-      </tr>
-    {% endfor %}
-  </table>-->
-{% endblock %}
+<body>
+    <ul class="nav nav-tabs nav-justified"></ul>
+    <nav class="navbar navbar-light navbar-expand-md">
+        <div class="container-fluid"><a class="navbar-brand" href="#"><strong>NewsFeed</strong></a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                id="navcol-1">
+                <ul class="nav navbar-nav align-content-center mr-auto">
+                    <li class="dropdown"><a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">Reports</a>
+                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">road_accident</a><a class="dropdown-item" role="presentation" href="#">fire</a><a class="dropdown-item" role="presentation" href="#">natural_disaster</a><a class="dropdown-item"
+                                role="presentation" href="#">crime</a><a class="dropdown-item" role="presentation" href="#">Others</a></div>
+                    </li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                </ul><a class="btn btn-primary" role="button" href="/report" style="background-color:rgb(19,171,237);">Report</a><button class="btn btn-primary" type="button" style="background-color:rgb(255,0,0);">Logout</button></div>
+        </div>
+    </nav>
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

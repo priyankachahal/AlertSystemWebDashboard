@@ -1,41 +1,52 @@
-{% extends 'layout.html' %}
+<!DOCTYPE html>
+<html>
 
-{% block body %}
-  <div class="col-lg-4 col-lg-offset-4 text-center">
-	 <h1>Report !</h1>
-	 </div>
-	</br>
-  <form enctype="multipart/form-data" action="" method="POST" >
-     <div class="form-group row">
-	<div class="col-lg-4 col-lg-offset-4">
-      <label>Address</label>
-      <input type="text" required name="address"   class="form-control"  value={{request.form.address}} >
-    </div></div>
-    <div class="form-group row" >
-	<div class="col-lg-4 col-lg-offset-4">
-      <label>Description</label>
-      <textarea name="description" class="form-control"  value={{request.form.description}}></textarea>
-    </div></div>
-	<div class="form-group row" >
-    <div class="col-lg-2 col-lg-offset-4">
-	<label>Type of Emergency</label>
-	<select class="form-control" name= "type_em">
-	
-    <option value="Robbery">Robbery</option>
-    <option value="Accident">Accident</option>
-    <option value="Other">Other</option>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>smart_app webpage1</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="../static/css/styles.min.css">
+</head>
 
-     </select>
-	 </div></div>
-    <div class="form-group row" >
-	<div class="col-lg-4 col-lg-offset-4">
-	 <label>Image</label>
-	 <input type="file" name="image"><br>
-     </div>
-    </div><div class="col-lg-4 col-lg-offset-4 text-center">
-    <p><input type="submit" class="btn btn-primary" value="Submit"></p>
-	</div>
-  </form>
-	  
-	
-{% endblock %}
+<body>
+    <div class="container d-table-cell">
+        <div class="col">
+            <h1 class="text-center">#Report Emergency#</h1>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col-lg-6">
+                    <p class="text-right">Title :</p>
+                </div>
+                <div class="col-lg-6"><input class="align-items-center align-content-center" type="text"></div>
+                <div class="col-lg-6">
+                    <p class="text-right">Description:</p>
+                </div>
+                <div class="col"><input class="align-items-center align-content-center" type="text">
+                    <div class="dropdown"><button class="btn btn-primary dropdown-toggle d-inline-flex flex-grow-1 flex-shrink-1 align-items-center align-self-center" data-toggle="dropdown" aria-expanded="false" type="button">Category&nbsp;</button>
+                        <div class="dropdown-menu"
+                            role="menu"><a class="dropdown-item" role="presentation" href="#">road_accident</a><a class="dropdown-item" role="presentation" href="#">fire</a><a class="dropdown-item" role="presentation" href="#">natural_disaster</a><a class="dropdown-item"
+                                role="presentation" href="#">crime</a><a class="dropdown-item" role="presentation" href="#">others</a>
+                            <div class="dropdown-divider" role="presentation"></div>
+                            <div class="dropdown-divider" role="presentation"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6"><button class="btn btn-primary active align-items-center" type="submit">Submit</button></div>
+            </div>
+        </div>
+    </div>
+    <div></div>
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

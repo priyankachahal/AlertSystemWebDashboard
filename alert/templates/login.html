@@ -1,25 +1,36 @@
-{% extends 'layout.html' %}
+<!DOCTYPE html>
+<html>
 
-{% block body %}
-  
-  <form action="" method="POST">
-    <div class="form-group row " >
-	 <div class="col-lg-4 col-lg-offset-4 text-center">
-	 <h1>Login</h1></br>
-	 </div>
-	 <div class="col-lg-4 col-lg-offset-4">
-      <label>Email Id</label>
-      <input type="text" required name="email"   class="form-control"  value={{request.form.username}}>
-	  </div>
-    </div>
-    <div class="form-group row" >
-	<div class="col-lg-4 col-lg-offset-4">
-      <label>Password</label>
-      <input type="password" required name="password" class="form-control"  value={{request.form.password}}>
-    </div></div>
-	</br>
-	<div class="col-lg-4 col-lg-offset-4 text-center">
-    <button type="submit" class="btn btn-primary">Submit</button>
-	</div>
-  </form>
-{% endblock %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>smart_app webpage1</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="../static/css/styles.min.css">
+</head>
+
+<body>
+<div class="login-dark" style="background-image:url(&quot;images (2)1.jpg&quot;);background-color:rgb(163,206,224);">
+    <form method="post" style="background-color:rgb(217,222,227);">
+        <h2 class="sr-only">Login Form</h2>
+        <div class="illustration"><i class="icon ion-ios-locked-outline" style="color:rgb(234,16,16);"></i></div>
+        <div class="form-group">
+            <input type="text" required name="email"   class="form-control" placeholder="Email" value={{request.form.username}}>
+
+           <!-- <input class="form-control" type="email" name="email" placeholder="Email"> -->
+        </div>
+        <div class="form-group">
+      <input type="password" required name="password" class="form-control" placeholder="Password"  value={{request.form.password}}>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Log In</button>
+            <!-- <a class="btn btn-primary btn-block" role="button" href="#dashboard.html" style="background-color:rgb(234,6,6);">Log In</a> -->
+        </div>
+    </form>
+</div>
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
