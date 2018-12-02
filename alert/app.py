@@ -230,10 +230,9 @@ def report():
             msg = header + '\n' + body + '\n\n'
             smtpserver.sendmail(gmail_user, tolist, msg)
             smtpserver.close()
-            flash('Emergency reported successfully', 'success')
-            notification = pushpad.Notification(project, body=type_em + " at " + address + "\n" + description)
-            notification.broadcast()
-
+            #flash('Emergency reported successfully', 'success')
+            #notification = pushpad.Notification(project, body=type_em + " at " + address + "\n" + description)
+            #notification.broadcast()
         else:
             flash('Emergency has already been reported. You can add extra information to a current report', 'warning')
 
