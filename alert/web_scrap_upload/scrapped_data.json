@@ -1,0 +1,95 @@
+{
+    "schema": {
+        "fields": [
+            {
+                "name": "index",
+                "type": "integer"
+            },
+            {
+                "name": "address",
+                "type": "string"
+            },
+            {
+                "name": "description",
+                "type": "string"
+            },
+            {
+                "name": "category",
+                "type": "string"
+            },
+            {
+                "name": "creation_time",
+                "type": "datetime"
+            }
+        ],
+        "primaryKey": [
+            "index"
+        ],
+        "pandas_version": "0.20.0"
+    },
+    "data": [
+        {
+            "index": 0,
+            "address": "San Jose",
+            "description": "Tonight: Increasing clouds, with a low around 51. Light and variable wind. ",
+            "category": "weather",
+            "creation_time": "2018-12-13T20:33:39.161Z"
+        },
+        {
+            "index": 1,
+            "address": "San Jose",
+            "description": "Friday: Rain likely after 11am.  Mostly cloudy, with a high near 59. South wind 14 to 18 mph, with gusts as high as 24 mph.  Chance of precipitation is 70%. New precipitation amounts of less than a tenth of an inch possible. ",
+            "category": "weather",
+            "creation_time": "2018-12-13T20:33:39.161Z"
+        },
+        {
+            "index": 2,
+            "address": "San Jose",
+            "description": "Friday Night: Showers likely, mainly before 11pm.  Mostly cloudy, with a low around 53. South southeast wind around 10 mph.  Chance of precipitation is 60%. New precipitation amounts of less than a tenth of an inch possible. ",
+            "category": "weather",
+            "creation_time": "2018-12-13T20:33:39.161Z"
+        },
+        {
+            "index": 3,
+            "address": "San Jose",
+            "description": "Saturday: A 30 percent chance of showers, mainly before 11am.  Mostly cloudy, with a high near 60. South southeast wind around 14 mph, with gusts as high as 18 mph. ",
+            "category": "weather",
+            "creation_time": "2018-12-13T20:33:39.161Z"
+        },
+        {
+            "index": 4,
+            "address": "San Jose",
+            "description": "Saturday Night: A slight chance of showers before 11pm, then a chance of rain, mainly after 5am.  Mostly cloudy, with a low around 54. South southeast wind 6 to 10 mph.  Chance of precipitation is 30%.",
+            "category": "weather",
+            "creation_time": "2018-12-13T20:33:39.161Z"
+        },
+        {
+            "index": 5,
+            "address": "San Jose",
+            "description": "Sunday: Rain likely, mainly after 11am.  Cloudy, with a high near 60. Chance of precipitation is 60%. New precipitation amounts between a tenth and quarter of an inch possible. ",
+            "category": "weather",
+            "creation_time": "2018-12-13T20:33:39.161Z"
+        },
+        {
+            "index": 6,
+            "address": "San Jose",
+            "description": "Sunday Night: Rain. The rain could be heavy at times.  Low around 53. Chance of precipitation is 90%.",
+            "category": "weather",
+            "creation_time": "2018-12-13T20:33:39.161Z"
+        },
+        {
+            "index": 7,
+            "address": "San Jose",
+            "description": "Monday: A chance of showers.  Partly sunny, with a high near 58.",
+            "category": "weather",
+            "creation_time": "2018-12-13T20:33:39.161Z"
+        },
+        {
+            "index": 8,
+            "address": "San Jose",
+            "description": "Monday Night: Partly cloudy, with a low around 50.",
+            "category": "weather",
+            "creation_time": "2018-12-13T20:33:39.161Z"
+        }
+    ]
+}
